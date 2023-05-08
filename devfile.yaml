@@ -6,7 +6,7 @@ projects:
   - name: spring-data-jpa-devfile
     git:
       checkoutFrom:
-        revision: master
+        revision: idea-editor
       remotes:
         origin: https://github.com/gauravgaikwad242/spring-data-jpa-devfile
 attributes:  
@@ -50,7 +50,7 @@ components:
         - name: POSTGRESQL_PASSWORD
           value: password
         - name: POSTGRESQL_DATABASE
-          value: blog_spring
+          value: customer
         - name: PGDATA
           value: /tmp/pgdata
   - name: m2
@@ -83,39 +83,6 @@ commands:
       commandLine: "mvn test"
       group:
         kind: test
-  # - id: packagenative
-  #   exec:
-  #     label: "Package Native"
-  #     component: tools
-  #     workingDir: ${PROJECTS_ROOT}/spring-data-jpa-devfile
-  #     commandLine: "mvn package -Dnative -Dmaven.test.skip -Dquarkus.native.native-image-xmx=3G"
-  #     group:
-  #       kind: build
-  # - id: startdev
-  #   exec:
-  #     label: "Start Development mode (Hot reload + debug)"
-  #     component: tools
-  #     workingDir: ${PROJECTS_ROOT}/spring-data-jpa-devfile
-  #     commandLine: "mvn compile quarkus:dev"
-  #     group:
-  #       kind: run
-  #       isDefault: true
-  # - id: startnative
-  #   exec:
-  #     label: "Start Native"
-  #     component: ubi-minimal
-  #     workingDir: ${PROJECTS_ROOT}/spring-data-jpa-devfile/target
-  #     commandLine: "./spring-data-jpa-devfile-1.0.0-SNAPSHOT-runner"
-  #     group:
-  #       kind: run
-  # - id: tag
-  #   exec:
-  #     label: "Tag Image"
-  #     component: tools
-  #     workingDir: ${PROJECTS_ROOT}/spring-data-jpa-devfile
-  #     commandLine: "podman tag localhost/quarkus/getting-started-jvm:latest quay.io/ibuziuk/spring-data-jpa-devfile:demo"
-  #     group:
-  #       kind: test
   - id: deploypostgres
     exec:
       label: "Deploy Postrgres"
